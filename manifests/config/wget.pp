@@ -1,5 +1,8 @@
-class conf::config::wget inherits conf::install::wget {
-  Package["wget"] {
-    ensure => latest, }
-
+# A description of what this class does
+#
+# @summary A short summary of the purpose of this class
+#
+# @example
+#   include conf::config::wget
+class conf::config::wget() inherits conf::install::wget {
 }

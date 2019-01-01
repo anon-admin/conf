@@ -1,21 +1,43 @@
 {
-  "author": "",
-  "dependencies": [],
-  "license": "GNU GENERAL PUBLIC LICENSE Version 3",
-  "name": "Dimitri-conf",
+  "name": "ppmister-conf",
+  "version": "0.1.0",
+  "author": "ppmister",
+  "summary": "This module is defining some common packages, files and services for debian and ubuntu Os, providing a single point of definition.",
+  "license": "GPL-3.0-or-later",
+  "source": "https://github.com/anon-admin/conf",
+  "project_page": "https://github.com/anon-admin/conf",
+  "issues_url": "https://github.com/anon-admin/conf/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.16.0 < 5.0.0"
+    }
+  ],
   "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9"
+      ]
+    },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "18.04",
-        "16.04"
+        "14.04",
+        "16.04",
+        "18.04"
       ]
     }
   ],
-  "project_page": "https://github.com/anon-admin/conf",
-  "requirements": [],
-  "source": "https://github.com/anon-admin/conf",
-  "summary": "",
-  "tags": [],
-  "version": "0.1.0"
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "pdk-version": "1.8.0",
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
+  "template-ref": "1.8.0-0-g0d9da00"
 }

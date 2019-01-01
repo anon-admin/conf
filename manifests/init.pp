@@ -1,25 +1,33 @@
-# Class: conf
+# Base class defining all commons for inherited ones
 #
-# This module manages conf
+# @summary include common files of Ubuntu OS
 #
-# Parameters: none
-#
-# Actions:
-#
-# Requires: see Modulefile
-#
-# Sample Usage:
-#
+# @example
+#   include conf
 class conf {
+
+  #notify { "lsbdistcodename=${::lsbdistcodename}": }
+  if ($::operatingsystem == 'Debian') {
+    include stdlib
+    $lsbdistcodename = fact('os.release.major') ? {
+      '7' => 'wheezy',
+      '8' => 'jessie',
+      '9' => 'stretch'
+    }
+  } else {
+    $lsbdistcodename = $::lsbdistcodename
+  }
+
+  # depending on OS version, include default service system
   case $lsbdistcodename {
-    "wheezy" : { contain conf::sysvinit }
+    'wheezy' : { contain conf::sysvinit }
+    'trusty' : { contain conf::upstart }
     default  : { contain conf::systemd }
   }
-  contain conf::cron
-  contain conf::apt
-  contain conf::wget
-  contain conf::git
-  contain conf::expect
 
+  include conf::cron
+  include conf::apt
+  include conf::wget
+  include conf::git
+  include conf::expect
 }
-
