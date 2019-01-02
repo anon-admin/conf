@@ -5,8 +5,8 @@
 # @example
 #   include conf::network::config::interfaces
 class conf::network::config::interfaces {
-  file { "/etc/network/interfaces":
-    mode  => 444,
+  file { '/etc/network/interfaces':
+    mode  => '0444',
     owner => root,
     group => root,
   }

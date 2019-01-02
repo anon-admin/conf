@@ -4,19 +4,9 @@
 #
 # @example
 #   include conf
-class conf {
+class conf inherits conf::lsbdist {
 
-  #notify { "lsbdistcodename=${::lsbdistcodename}": }
-  if ($::operatingsystem == 'Debian') {
-    include stdlib
-    $lsbdistcodename = fact('os.release.major') ? {
-      '7' => 'wheezy',
-      '8' => 'jessie',
-      '9' => 'stretch'
-    }
-  } else {
-    $lsbdistcodename = $::lsbdistcodename
-  }
+  $lsbdistcodename = $conf::lsbdist::codename
 
   # depending on OS version, include default service system
   case $lsbdistcodename {
@@ -28,6 +18,7 @@ class conf {
   include conf::cron
   include conf::apt
   include conf::wget
+  include conf::curl
   include conf::git
   include conf::expect
 }
